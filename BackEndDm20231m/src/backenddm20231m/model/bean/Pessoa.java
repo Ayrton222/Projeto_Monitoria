@@ -13,9 +13,9 @@ public class Pessoa {
     
     private int id;
     private String nome;
-    private String cpf;
+    //private String cpf;
     private String tipo;
-    private String email;
+    //private String email;
 
     public Pessoa(int id) {
         this.id = id;
@@ -30,6 +30,19 @@ public class Pessoa {
         this.nome = nome;
     }
 
+    public Pessoa(String nome, String tipo) {
+        this.nome = nome;
+        this.tipo = tipo;
+    }
+
+    public Pessoa(int id, String nome, String tipo) {
+        this.id = id;
+        this.nome = nome;
+        this.tipo = tipo;
+    }
+
+    
+    /*
     // Criação do construct de Pessoa
     public Pessoa(String nome, String cpf, String tipo, String email) {
         this.nome = nome;
@@ -45,7 +58,7 @@ public class Pessoa {
         this.tipo = tipo;
         this.email = email;
     }
-    
+    */
     
 
     public int getId() {
@@ -64,6 +77,7 @@ public class Pessoa {
         this.nome = nome;
     }
 
+    /*
     public String getCpf() {
         return cpf;
     }
@@ -71,7 +85,7 @@ public class Pessoa {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
+*/
     public String getTipo() {
         return tipo;
     }
@@ -80,6 +94,7 @@ public class Pessoa {
         this.tipo = tipo;
     }
 
+    /*
     public String getEmail() {
         return email;
     }
@@ -87,12 +102,13 @@ public class Pessoa {
     public void setEmail(String email) {
         this.email = email;
     }
+    */
     
-    
-
-    @Override
+@Override
     public String toString() {
-        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", tipo=" + tipo + ", email=" + email +'}';
+        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", tipo=" + tipo + '}';
     }
+
+ 
     
 }

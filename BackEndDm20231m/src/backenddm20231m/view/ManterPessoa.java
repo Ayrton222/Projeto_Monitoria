@@ -42,10 +42,10 @@ public class ManterPessoa {
 
     public static void inserir() {
         String nome = JOptionPane.showInputDialog("NOME");
-        String cpf = JOptionPane.showInputDialog("Cpf");
+        //String cpf = JOptionPane.showInputDialog("Cpf");
         String tipo = JOptionPane.showInputDialog("Tipo");
-        String email = JOptionPane.showInputDialog("Email");
-        Pessoa pesEntrada = new Pessoa(nome,cpf, tipo,email);
+        //String email = JOptionPane.showInputDialog("Email");
+        Pessoa pesEntrada = new Pessoa(nome,tipo);
         ControllerPessoa contpes = new ControllerPessoa();
         Pessoa pesSaida = contpes.inserir(pesEntrada);
         JOptionPane.showMessageDialog(null,pesSaida.toString());
@@ -54,10 +54,10 @@ public class ManterPessoa {
     public static void alterar() {
         int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
         String nome = JOptionPane.showInputDialog("NOME");
-        String cpf = JOptionPane.showInputDialog("Cpf");
+        //String cpf = JOptionPane.showInputDialog("Cpf");
         String tipo = JOptionPane.showInputDialog("Tipo");
-        String email = JOptionPane.showInputDialog("Email");
-        Pessoa pesEntrada = new Pessoa(id,nome,cpf, tipo,email);
+        //String email = JOptionPane.showInputDialog("Email");
+        Pessoa pesEntrada = new Pessoa(id,nome,tipo);
         ControllerPessoa contpes = new ControllerPessoa();
         Pessoa pesSaida = contpes.alterar(pesEntrada);
         JOptionPane.showMessageDialog(null,pesSaida.toString());

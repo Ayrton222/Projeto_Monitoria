@@ -6,8 +6,8 @@
 package backenddm20231m.view;
 
 import backenddm20231m.controller.ControllerUsuario;
-import backenddm20231m.model.bean.Pessoa;
 import backenddm20231m.model.bean.Usuario;
+import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class ManterUsuario {
     
-    public static void menu() {
+    public static void menu() throws SQLException, ClassNotFoundException {
         String msg = " 1 - Inserir \n 2 - Alterar \n 3 - buscar \n 4 - excluir \n 5 - Listar " ;
         int num = Integer.parseInt(JOptionPane.showInputDialog(msg));
         switch (num) {
@@ -41,59 +41,62 @@ public class ManterUsuario {
         }
     }
 
-    public static boolean validar() {
+    public static boolean validar() throws SQLException, ClassNotFoundException {
         String login = JOptionPane.showInputDialog("LOGIN");
         String senha = JOptionPane.showInputDialog("SENHA");
-        Usuario usuEnt = new Usuario(login, senha);
+        Usuario usuEnt = new Usuario(login,senha);
         ControllerUsuario contUsu = new ControllerUsuario();
         return contUsu.validar(usuEnt);
     }
 
-
-    public static void inserir() {
+    private static void inserir() throws SQLException, ClassNotFoundException {
         String login = JOptionPane.showInputDialog("LOGIN");
         String senha = JOptionPane.showInputDialog("SENHA");
         String status = JOptionPane.showInputDialog("STATUS");
         String tipo = JOptionPane.showInputDialog("TIPO");
-        Usuario usuEntrada = new Usuario(login, senha, status, tipo);
+        Usuario usuEnt = new Usuario(login,senha,status,tipo);
         ControllerUsuario contUsu = new ControllerUsuario();
-        Usuario usuSaida = contUsu.inserir(usuEntrada);
+        Usuario usuSaida = contUsu.inserir(usuEnt);
         JOptionPane.showMessageDialog(null,usuSaida.toString());
     }
 
-    public static void alterar() {
+    private static void alterar() throws SQLException, ClassNotFoundException {
         int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
         String login = JOptionPane.showInputDialog("LOGIN");
         String senha = JOptionPane.showInputDialog("SENHA");
         String status = JOptionPane.showInputDialog("STATUS");
         String tipo = JOptionPane.showInputDialog("TIPO");
-        Usuario usuEntrada = new Usuario(id,login, senha, status, tipo);
+        Usuario usuEnt = new Usuario(id,login,senha,status,tipo);
         ControllerUsuario contUsu = new ControllerUsuario();
-        Usuario usuSaida = contUsu.alterar(usuEntrada);
+        Usuario usuSaida = contUsu.alterar(usuEnt);
         JOptionPane.showMessageDialog(null,usuSaida.toString());
+    }
 
-    }
-    public static void buscar() {
+    private static void buscar() throws SQLException, ClassNotFoundException {
         int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
-        Usuario usuEntrada = new Usuario(id);
+        Usuario usuEnt = new Usuario(id);
         ControllerUsuario contUsu = new ControllerUsuario();
-        Usuario usuSaida = contUsu.buscar(usuEntrada);
+        Usuario usuSaida = contUsu.buscar(usuEnt);
         JOptionPane.showMessageDialog(null,usuSaida.toString());
     }
-    public static void excluir() {
+
+    private static void excluir() throws SQLException, ClassNotFoundException {
         int id = Integer.parseInt(JOptionPane.showInputDialog("ID"));
-        Usuario usuEntrada = new Usuario(id);
+        Usuario usuEnt = new Usuario(id);
         ControllerUsuario contUsu = new ControllerUsuario();
-        Usuario usuSaida = contUsu.excluir(usuEntrada);
+        Usuario usuSaida = contUsu.excluir(usuEnt);
         JOptionPane.showMessageDialog(null,usuSaida.toString());
     }
-    public static void listar() {
+
+    private static void listar() throws SQLException, ClassNotFoundException {
         String login = JOptionPane.showInputDialog("LOGIN");
-        Usuario usuEntrada = new Usuario(login);
+        Usuario usuEnt = new Usuario(login);
         ControllerUsuario contUsu = new ControllerUsuario();
-        List<Usuario> listaUsu = contUsu.listar(usuEntrada);
-        for(Usuario usuSaida : listaUsu) 
+        List<Usuario> listaUsuario = contUsu.listar(usuEnt);
+        for (Usuario usuSaida : listaUsuario) {
             JOptionPane.showMessageDialog(null,usuSaida.toString());
         }
     }
 
+
+}

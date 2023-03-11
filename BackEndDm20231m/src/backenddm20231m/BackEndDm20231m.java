@@ -7,6 +7,8 @@ package backenddm20231m;
 
 import backenddm20231m.view.ManterLogradouro;
 import backenddm20231m.view.ManterPessoa;
+import backenddm20231m.view.ManterPessoaFisica;
+import backenddm20231m.view.ManterPessoaJuridica;
 import backenddm20231m.view.ManterUsuario;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -29,7 +31,7 @@ public class BackEndDm20231m {
     }
 
     public static void menu() throws SQLException, ClassNotFoundException {
-        String msg = " 0 - Sair \n 1 - Usuario \n 2 - Pessoa \n 3 - Logradouro \n 4 - UsuarioPessoa \n";
+        String msg = " 0 - Sair \n 1 - Usuario \n 2 - Pessoa \n 3 - Pessoa Fisica \n 4 - Pesosa Juridica  \n 5 - Logradouro \n";
         int num = Integer.parseInt(JOptionPane.showInputDialog(msg));
         switch (num) {
             case 0:
@@ -43,12 +45,14 @@ public class BackEndDm20231m {
                 ManterPessoa.menu();
                 break;
             case 3:
-                ManterLogradouro.menu();
+                 ManterPessoaFisica.menu();
                 break;
             case 4:
-                //ManterUsuarioPessoa.menu();
+              ManterPessoaJuridica.menu();
                 break;
-                
+            case 5:
+                ManterLogradouro.menu();
+                break;
             default:
                 System.out.println("Opção inválido");
         }

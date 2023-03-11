@@ -5,9 +5,9 @@
  */
 package backenddm20231m.controller;
 
-import backenddm20231m.model.bean.Pessoa;
 import backenddm20231m.model.bean.Usuario;
 import backenddm20231m.model.dao.DaoUsuario;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -15,45 +15,47 @@ import java.util.List;
  * @author User
  */
 public class ControllerUsuario {
-
+    
     DaoUsuario daoUsu;
 
-    public Usuario inserir(Usuario usuEntrada) {
-        daoUsu = new DaoUsuario();
-        return daoUsu.inserir(usuEntrada);
-    }
-
-    public boolean validar(Usuario usuEnt) {
+    public boolean validar(Usuario usuEnt) throws SQLException, ClassNotFoundException {
         boolean retorno = false;
         daoUsu = new DaoUsuario();
         Usuario usuSaida = daoUsu.validar(usuEnt);
-        if(usuEnt.getLogin().equals(usuSaida.getLogin())) {
-            if(usuEnt.getSenha().equals(usuSaida.getSenha())) {
-                retorno = true;
-            }
+        if(usuSaida != null) {
+            retorno = true;
         }
-        
         return retorno;
     }
 
-    public Usuario alterar(Usuario usuEntrada) {
+    public Usuario inserir(Usuario usuEnt) throws SQLException, ClassNotFoundException {
         daoUsu = new DaoUsuario();
-        return daoUsu.alterar(usuEntrada);
+        Usuario usuSaida = daoUsu.inserir(usuEnt);
+        return usuSaida;
     }
 
-    public Usuario buscar(Usuario usuEntrada) {
+    public Usuario alterar(Usuario usuEnt) throws SQLException, ClassNotFoundException {
         daoUsu = new DaoUsuario();
-        return daoUsu.buscar(usuEntrada);
+        Usuario usuSaida = daoUsu.alterar(usuEnt);
+        return usuSaida;
     }
 
-    public Usuario excluir(Usuario usuEntrada) {
+    public Usuario buscar(Usuario usuEnt) throws SQLException, ClassNotFoundException {
         daoUsu = new DaoUsuario();
-        return daoUsu.excluir(usuEntrada);
+        Usuario usuSaida = daoUsu.buscar(usuEnt);
+        return usuSaida;
     }
 
-    public List<Usuario> listar(Usuario usuEntrada) {
-       daoUsu = new DaoUsuario();
-       return daoUsu.listar(usuEntrada);
+    public Usuario excluir(Usuario usuEnt) throws SQLException, ClassNotFoundException {
+        daoUsu = new DaoUsuario();
+        Usuario usuSaida = daoUsu.excluir(usuEnt);
+        return usuSaida;
     }
+
+    public List<Usuario> listar(Usuario usuEnt) throws SQLException, ClassNotFoundException {
+        daoUsu = new DaoUsuario();
+        List<Usuario> listaUsuario = daoUsu.listar(usuEnt);
+        return listaUsuario;
+     }
     
 }
